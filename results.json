@@ -1,0 +1,268 @@
+{
+  "dedup": {
+    "HAM_THR": 6,
+    "COS_THR": 0.95,
+    "images": 3879,
+    "groups": 1500,
+    "largest_group": 183,
+    "mixed_label_groups": 0
+  },
+  "videos": {
+    "frames": 3694,
+    "photos": 185,
+    "videos_per_class": {
+      "Capsicum": 3,
+      "Carrot": 6,
+      "Cucumber": 2,
+      "Potato": 2,
+      "Raddish": 2,
+      "Squash": 4
+    },
+    "groups_per_class": {
+      "Capsicum": 45,
+      "Carrot": 31,
+      "Cucumber": 17,
+      "Potato": 48,
+      "Raddish": 28,
+      "Squash": 35
+    },
+    "n_splits": 5
+  },
+  "author_split_leak": {
+    "test": 799,
+    "exact": 717,
+    "near_phash": 760,
+    "group_leak": 769
+  },
+  "cv": [
+    {
+      "features": "simple: HSV hist + HOG",
+      "validation": "1 random",
+      "accuracy": "0.982 \u00b1 0.005",
+      "macro_F1": "0.979 \u00b1 0.008"
+    },
+    {
+      "features": "simple: HSV hist + HOG",
+      "validation": "2 near-duplicate groups",
+      "accuracy": "0.923 \u00b1 0.027",
+      "macro_F1": "0.911 \u00b1 0.028"
+    },
+    {
+      "features": "simple: HSV hist + HOG",
+      "validation": "3 video groups",
+      "accuracy": "0.514 \u00b1 0.150",
+      "macro_F1": "0.336 \u00b1 0.071"
+    },
+    {
+      "features": "ResNet18 embeddings",
+      "validation": "1 random",
+      "accuracy": "0.999 \u00b1 0.001",
+      "macro_F1": "0.999 \u00b1 0.001"
+    },
+    {
+      "features": "ResNet18 embeddings",
+      "validation": "2 near-duplicate groups",
+      "accuracy": "0.994 \u00b1 0.011",
+      "macro_F1": "0.992 \u00b1 0.015"
+    },
+    {
+      "features": "ResNet18 embeddings",
+      "validation": "3 video groups",
+      "accuracy": "0.939 \u00b1 0.036",
+      "macro_F1": "0.841 \u00b1 0.085"
+    }
+  ],
+  "oof": {
+    "accuracy": 0.9391595772106213,
+    "macro_f1": 0.9205079541293414,
+    "macro_f1_not_balanced": 0.9252284075777285,
+    "macro_f1_per_fold": [
+      0.831771444945325,
+      0.8434122679589428,
+      0.7963466714350044,
+      0.9944169483341381,
+      0.7381175095001463
+    ],
+    "fold_test_composition": [
+      {
+        "fold": 0,
+        "test images": 1319,
+        "Capsicum": "1v + 8p",
+        "Carrot": "3v + 5p",
+        "Cucumber": "0v + 8p",
+        "Potato": "0v + 14p",
+        "Raddish": "0v + 9p",
+        "Squash": "2v + 9p"
+      },
+      {
+        "fold": 1,
+        "test images": 698,
+        "Capsicum": "1v + 10p",
+        "Carrot": "0v + 9p",
+        "Cucumber": "1v + 3p",
+        "Potato": "0v + 11p",
+        "Raddish": "0v + 5p",
+        "Squash": "1v + 5p"
+      },
+      {
+        "fold": 2,
+        "test images": 632,
+        "Capsicum": "0v + 14p",
+        "Carrot": "0v + 6p",
+        "Cucumber": "1v + 1p",
+        "Potato": "1v + 13p",
+        "Raddish": "1v + 9p",
+        "Squash": "1v + 9p"
+      },
+      {
+        "fold": 3,
+        "test images": 664,
+        "Capsicum": "0v + 6p",
+        "Carrot": "2v + 2p",
+        "Cucumber": "0v + 2p",
+        "Potato": "1v + 3p",
+        "Raddish": "1v + 2p",
+        "Squash": "0v + 5p"
+      },
+      {
+        "fold": 4,
+        "test images": 566,
+        "Capsicum": "1v + 4p",
+        "Carrot": "1v + 3p",
+        "Cucumber": "0v + 1p",
+        "Potato": "0v + 5p",
+        "Raddish": "0v + 1p",
+        "Squash": "0v + 3p"
+      }
+    ],
+    "report": {
+      "Capsicum": {
+        "precision": 0.8196022727272727,
+        "recall": 0.9382113821138212,
+        "f1-score": 0.8749052312357847,
+        "support": 615.0
+      },
+      "Carrot": {
+        "precision": 0.9630434782608696,
+        "recall": 0.9790055248618784,
+        "f1-score": 0.9709589041095891,
+        "support": 905.0
+      },
+      "Cucumber": {
+        "precision": 0.8160919540229885,
+        "recall": 0.6915584415584416,
+        "f1-score": 0.7486818980667839,
+        "support": 308.0
+      },
+      "Potato": {
+        "precision": 0.9904534606205251,
+        "recall": 0.9834123222748815,
+        "f1-score": 0.9869203329369798,
+        "support": 422.0
+      },
+      "Raddish": {
+        "precision": 0.9688581314878892,
+        "recall": 0.9790209790209791,
+        "f1-score": 0.9739130434782609,
+        "support": 286.0
+      },
+      "Squash": {
+        "precision": 0.9891135303265941,
+        "recall": 0.9471332836932241,
+        "f1-score": 0.9676683149486497,
+        "support": 1343.0
+      },
+      "accuracy": 0.9391595772106213,
+      "macro avg": {
+        "precision": 0.9245271379076899,
+        "recall": 0.9197236555872044,
+        "f1-score": 0.9205079541293414,
+        "support": 3879.0
+      },
+      "weighted avg": {
+        "precision": 0.9410699470503877,
+        "recall": 0.9391595772106213,
+        "f1-score": 0.938895748374318,
+        "support": 3879.0
+      }
+    },
+    "videos_below_90": [
+      {
+        "label": "Capsicum",
+        "video": "20251113_211024",
+        "images": 1,
+        "accuracy": 0.0,
+        "most_common_pred": "Squash"
+      },
+      {
+        "label": "Capsicum",
+        "video": "20251117_134205",
+        "images": 164,
+        "accuracy": 0.848,
+        "most_common_pred": "Capsicum"
+      },
+      {
+        "label": "Cucumber",
+        "video": "20251113_210310",
+        "images": 168,
+        "accuracy": 0.667,
+        "most_common_pred": "Cucumber"
+      },
+      {
+        "label": "Cucumber",
+        "video": "20260101_132322",
+        "images": 125,
+        "accuracy": 0.688,
+        "most_common_pred": "Cucumber"
+      },
+      {
+        "label": "Squash",
+        "video": "20251117_134731",
+        "images": 183,
+        "accuracy": 0.754,
+        "most_common_pred": "Squash"
+      }
+    ]
+  },
+  "calibration": {
+    "raw LogReg": 0.01681249486307616,
+    "calibrated (sigmoid)": 0.1388562236625043,
+    "use_calibration": false
+  },
+  "learning_curve": [
+    {
+      "n_per_class": 3,
+      "mean": 0.6872,
+      "std": 0.1394
+    },
+    {
+      "n_per_class": 5,
+      "mean": 0.7586,
+      "std": 0.1107
+    },
+    {
+      "n_per_class": 10,
+      "mean": 0.8174,
+      "std": 0.1097
+    },
+    {
+      "n_per_class": 20,
+      "mean": 0.8196,
+      "std": 0.1051
+    },
+    {
+      "n_per_class": 30,
+      "mean": 0.8461,
+      "std": 0.0962
+    },
+    {
+      "n_per_class": 33,
+      "mean": 0.854,
+      "std": 0.0741
+    }
+  ],
+  "unknown_threshold_0.83": {
+    "answered": 0.9138953338489302,
+    "accuracy_on_answered": 0.979407616361072
+  }
+}
